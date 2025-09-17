@@ -15,7 +15,7 @@ namespace Instituto.Models
         public string? CarNombre { get; set; }
 
         //Relación: Varias carreras para varios usuario
-        public virtual ICollection<CarreraUsuarioDocente> CarreraUsuarioDocentes { get; set; } = new List<CarreraUsuarioDocente>();
+        public virtual ICollection<CarreraDocente> CarreraDocentes { get; set; } = new List<CarreraDocente>();
 
 
     }
