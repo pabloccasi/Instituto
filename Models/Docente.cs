@@ -4,7 +4,7 @@
 
 namespace Instituto.Models
 {
-    public class UsuarioDocente : Usuario
+    public class Docente : Usuario
     {
         [Required]
 
@@ -16,6 +16,6 @@ namespace Instituto.Models
 
         //Relación Varios docentes varias carreras
 
-        public virtual ICollection<CarreraUsuarioDocente> CarreraUsuarioDocentes { get; set; } = new List<CarreraUsuarioDocente>();
+        public virtual ICollection<CarreraDocente> CarreraDocentes { get; set; } = new List<CarreraDocente>();
     }
 }

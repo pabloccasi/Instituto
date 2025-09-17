@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 
@@ -53,9 +54,11 @@ namespace Instituto.Models
 
 
         //Relacion un rol para cada usuario
+        [ForeignKey("RolId")]
         public virtual Rol? Rol { get; set; }
 
         //Relación de un estado para cada usuario
+        [ForeignKey("EstId")]
         public virtual Estado? Estado { get; set; }
 
 
