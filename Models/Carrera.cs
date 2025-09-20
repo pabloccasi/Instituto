@@ -20,6 +20,6 @@ namespace Instituto.Models
         //Relacion una carrera varias materias
         public virtual Materia? mtemas { get; set; }
 
-
+        //para ver
     }
 }
