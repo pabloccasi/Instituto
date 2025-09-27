@@ -14,12 +14,13 @@ namespace Instituto.Models
         [StringLength(80)]
         public string? CarNombre { get; set; }
 
-        //Relación: Varias carreras para varios usuario
+        //Relación: Varias carreras para varios usuarios
         public virtual ICollection<CarreraDocente> CarreraDocentes { get; set; } = new List<CarreraDocente>();
 
         //Relacion una carrera varias materias
         public virtual Materia? mtemas { get; set; }
 
-        //para ver
+        //Relacion Una carrera varios alumnos
+        public virtual ICollection<Alumno> Alumnos { get; set; } = new List<Alumno>();
     }
 }

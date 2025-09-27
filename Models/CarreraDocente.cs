@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
+//Tabla intermedia de una relación entre las tablas Carrera y Docente
+
 namespace Instituto.Models
 {
     [Index(nameof(UsuId), nameof(CarId), IsUnique = true)]

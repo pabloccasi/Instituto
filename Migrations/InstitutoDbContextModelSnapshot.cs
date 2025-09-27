@@ -216,6 +216,17 @@ namespace Instituto.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CarId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("usuarios", t =>
+                        {
+                            t.Property("CarId")
+                                .HasColumnName("Alumno_CarId");
+                        });
+
                     b.HasDiscriminator().HasValue("Alumno");
                 });
 
@@ -302,8 +313,19 @@ namespace Instituto.Migrations
                     b.Navigation("Rol");
                 });
 
+            modelBuilder.Entity("Instituto.Models.Alumno", b =>
+                {
+                    b.HasOne("Instituto.Models.Carrera", "Carrera")
+                        .WithMany("Alumnos")
+                        .HasForeignKey("CarId");
+
+                    b.Navigation("Carrera");
+                });
+
             modelBuilder.Entity("Instituto.Models.Carrera", b =>
                 {
+                    b.Navigation("Alumnos");
+
                     b.Navigation("CarreraDocentes");
                 });
 

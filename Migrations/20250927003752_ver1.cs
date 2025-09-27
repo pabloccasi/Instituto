@@ -84,12 +84,18 @@ namespace Instituto.Migrations
                     RolId = table.Column<int>(type: "int", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     AlumnoMatricula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Alumno_CarId = table.Column<int>(type: "int", nullable: true),
                     CarId = table.Column<int>(type: "int", nullable: true),
                     MatId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_usuarios", x => x.UsuId);
+                    table.ForeignKey(
+                        name: "FK_usuarios_carreras_Alumno_CarId",
+                        column: x => x.Alumno_CarId,
+                        principalTable: "carreras",
+                        principalColumn: "CarId");
                     table.ForeignKey(
                         name: "FK_usuarios_estados_EstId",
                         column: x => x.EstId,
@@ -195,6 +201,11 @@ namespace Instituto.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_usuarios_Alumno_CarId",
+                table: "usuarios",
+                column: "Alumno_CarId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_usuarios_EstId",
                 table: "usuarios",
                 column: "EstId");
@@ -215,19 +226,19 @@ namespace Instituto.Migrations
                 name: "materiasAlumno");
 
             migrationBuilder.DropTable(
-                name: "carreras");
-
-            migrationBuilder.DropTable(
                 name: "usuarios");
 
             migrationBuilder.DropTable(
-                name: "mtemas");
+                name: "carreras");
 
             migrationBuilder.DropTable(
                 name: "estados");
 
             migrationBuilder.DropTable(
                 name: "roles");
+
+            migrationBuilder.DropTable(
+                name: "mtemas");
         }
     }
 }

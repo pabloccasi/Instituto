@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 
@@ -10,6 +11,13 @@ namespace Instituto.Models
         [Required]
         [Display(Name = "Matrícula")]
         public string? AlumnoMatricula { get; set; }
+
+        //Clave foránea
+        public int? CarId { get; set; }
+
+        //Relacion Varios alumnos una carrera
+        [ForeignKey("CarId")]
+        public virtual Carrera? Carrera { get; set; }
 
 
 
